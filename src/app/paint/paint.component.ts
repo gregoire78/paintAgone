@@ -127,8 +127,6 @@ export class PaintComponent implements OnInit {
             this.x = "white";
             break;
     }
-    if (this.x == "white") this.y = 14;
-    else this.y = 2;
   }
 
   getMousePos(evt) {
