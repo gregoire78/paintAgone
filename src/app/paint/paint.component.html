@@ -1,0 +1,27 @@
+<p>
+  paint works!
+</p>
+<canvas id="can" width="400" height="400" [style.cursor]="cursor" (mousemove)="drawLinee('move', $event)" (mouseup)="findxy('up', $event)" (mouseout)="findxy('out', $event)" (mousedown)="drawLinee('down', $event)"></canvas>
+
+<div>Choisir une couleur</div>
+
+<ul class="colorTile">
+  <li id="green"  (click)="color($event)"></li>
+  <li id="blue"   (click)="color($event)"></li>
+  <li id="red"    (click)="color($event)"></li>
+  <li id="yellow" (click)="color($event)"></li>
+  <li id="orange" (click)="color($event)"></li>
+  <li id="black"  (click)="color($event)"></li>
+    
+  <li class="separator">•</li>
+  <li id="white" (click)="color($event)"></li>
+</ul>
+
+<input type="range" min="2" max="20" value="2" id="fat" step="1" (change)="fatChange()"><span [innerHTML]="hello"></span>
+
+<div>
+  <input type="button" value="Sauvegarder" size="30" id="save" (click)="save()">
+  <input type="button" value="Effacer" id="clr" size="23" (click)="erase()">
+</div>
+
+<img src="" alt="" id="canvasimg">
