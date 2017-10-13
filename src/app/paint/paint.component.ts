@@ -21,6 +21,7 @@ export class PaintComponent implements OnInit {
   img;
   ctx;
   fat;
+  pickupColor;
 
   w;
   h;
@@ -33,8 +34,9 @@ export class PaintComponent implements OnInit {
     this.img = document.getElementById("canvasimg");
     this.ctx = this.canvas.getContext("2d");
     this.fat = document.getElementById("fat");
+    this.pickupColor = document.getElementById("pickup-color");
     this.y = this.fat.value;
-    this.hello = this.y;
+    this.hello = this.y + ' px';
 
     this.w = this.canvas.width;
     this.h = this.canvas.height;
@@ -42,19 +44,19 @@ export class PaintComponent implements OnInit {
     this.ctx.fillStyle = "#FFFFFF";
     this.ctx.fillRect(0,0,this.w, this.h);
 
-    
+
   }
 
   fatChange(){
     this.y = this.fat.value;
-    this.hello = this.fat.value;
+    this.hello = this.fat.value + ' px';
   }
 
   erase() {
     /*let m = confirm("Want to clear");
     if (m) {*/
         this.ctx.clearRect(0, 0, this.w, this.h);
-    //} 
+    //}
   }
 
   save() {
@@ -80,14 +82,19 @@ export class PaintComponent implements OnInit {
     if (res == 'down') {
       this.currX = this.getMousePos(e).x;
       this.currY = this.getMousePos(e).y;
-
+      this.flag = true;
       this.dot_flag = true;
 
       if (this.dot_flag) {
+        // circle de depart one click
+        this.ctx.beginPath();
+        this.ctx.arc(this.currX, this.currY, this.y/2, 0, 2 * Math.PI, false);
+        this.ctx.fillStyle = this.x;
+        this.ctx.fill();
+
         this.ctx.beginPath();
         this.ctx.moveTo(this.currX, this.currY);
         this.dot_flag = false;
-        this.flag = true;
       }
     }
 
@@ -127,6 +134,11 @@ export class PaintComponent implements OnInit {
             this.x = "white";
             break;
     }
+  }
+
+  pickColor(e){
+    this.x = e.target.value;
+    this.pickupColor.style.backgroundColor = e.target.value;
   }
 
   getMousePos(evt) {

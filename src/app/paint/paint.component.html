@@ -12,12 +12,15 @@
   <li id="yellow" (click)="color($event)"></li>
   <li id="orange" (click)="color($event)"></li>
   <li id="black"  (click)="color($event)"></li>
-    
   <li class="separator">•</li>
   <li id="white" (click)="color($event)"></li>
+  <li class="separator">•</li>
+  <li><input id="pickup-color" type="color" name="favcolor" value="#FFFFFF" (change)="pickColor($event)"></li>
 </ul>
 
-<input type="range" min="2" max="100" value="2" id="fat" step="1" (change)="fatChange()"><span [innerHTML]="hello"></span>
+<div class="range-size">
+  <input type="range" min="1" max="100" value="2" id="fat" step="1" (input)="fatChange()"><span [innerHTML]="hello"></span>
+</div>
 
 <div>
   <input type="button" value="Sauvegarder" size="30" id="save" (click)="save()">

@@ -35,3 +35,33 @@
     max-width: 400px;
     border:2px solid;
 }
+img{border: none}
+
+.range-size {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.range-size input {
+  margin: 0;
+}
+.range-size span {
+  margin-left: 5px;
+  line-height: 25px;
+}
+
+input[type=color] {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: lightgray;
+  border: none;
+  line-height: 15px;
+  display: block;
+  cursor: pointer;
+}
+input[type=color]:focus{
+  outline: none;
+}
